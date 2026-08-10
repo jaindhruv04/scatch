@@ -1,0 +1,6 @@
+$kind: http-request
+name: Base Url Test
+description: ""
+url: "{{baseurl}}"
+method: GET
+order: 1786393324666
