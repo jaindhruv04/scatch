@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/jaindhruv04/scatch/issues"
   },
-  "homepage": "https://github.com/jaindhruv04/scatch#readme"
+  "homepage": "https://github.com/jaindhruv04/scatch#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.2",
+    "multer": "^2.2.0"
+  }
 }
