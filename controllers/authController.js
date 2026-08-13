@@ -34,3 +34,29 @@ module.exports.registerUser = async (req, res) => {
     res.send(err.message);
   }
 };
+
+module.exports.loginUser = async (req, res) => {
+  let { email, password } = req.body;
+
+  let user = await userModel.findOne({ email: email });
+
+  if (!user) {
+    req.flash("error", "Email or password Incorrect");
+    return res.redirect("/");
+  }
+
+  bcrypt.compare(password, user.password, (err, result) => {
+    if (result) {
+      let token = generateToken(user);
+      res.cookie("token", token).redirect("/shop");
+    } else {
+      req.flash("error", "Email or password Incorrect");
+      return res.redirect("/");
+    }
+  });
+};
+
+module.exports.logoutUser = async (req, res) => {
+  res.cookie("token", "");
+  res.redirect("/");
+};
