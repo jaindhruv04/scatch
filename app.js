@@ -19,4 +19,8 @@ app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
+app.get("/", (req, res) => {
+  res.render("index", { error: "" });
+});
+
 app.listen(3000);
