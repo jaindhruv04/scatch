@@ -11,6 +11,7 @@ const db = require("./config/mongoose-connections");
 const ownersRouter = require("./routes/ownersRouter");
 const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
+const indexRouter = require("./routes/index");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,16 +28,9 @@ app.use(
 );
 app.use(flash());
 
+app.use("/", indexRouter);
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
-
-app.get("/", (req, res) => {
-  res.render("index", { error: req.flash("error") });
-});
-
-app.get("/shop", (req, res) => {
-  res.render("shop", { products: [] });
-});
 
 app.listen(3000);
