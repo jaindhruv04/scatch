@@ -26,7 +26,11 @@ module.exports.registerUser = async (req, res) => {
           });
 
           let token = generateToken(user);
-          res.cookie("token", token);
+          res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+          });
           res.redirect("/shop");
         }
       });
@@ -49,7 +53,11 @@ module.exports.loginUser = async (req, res) => {
   bcrypt.compare(password, user.password, (err, result) => {
     if (result) {
       let token = generateToken(user);
-      res.cookie("token", token).redirect("/shop");
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+      }).redirect("/shop");
     } else {
       req.flash("error", "Email or password Incorrect");
       return res.redirect("/");
