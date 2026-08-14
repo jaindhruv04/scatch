@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "development") {
 
 router.get("/admin", isLoggedIn, (req, res) => {
   let success = req.flash("success");
-  res.render("createproducts", { success: success });
+  res.render("createproducts", { success: success, loggedin: true });
 });
 
 module.exports = router;
