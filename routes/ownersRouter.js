@@ -43,7 +43,7 @@ router.get("/admin", isLoggedIn, isAdmin, async (req, res) => {
   try {
     let products = await productModel.find();
     let success = req.flash("success");
-    res.render("admin", { products, success, loggedin: true });
+    res.render("admin", { products, success, loggedin: true, user: req.user });
   } catch (err) {
     console.error("Admin route error:", err.message);
     res.status(500).send(err.message);
@@ -52,7 +52,7 @@ router.get("/admin", isLoggedIn, isAdmin, async (req, res) => {
 
 router.get("/admin/create", isLoggedIn, isAdmin, (req, res) => {
   let success = req.flash("success");
-  res.render("createproducts", { success, loggedin: true });
+  res.render("createproducts", { success, loggedin: true, user: req.user });
 });
 
 router.get("/admin/delete/:productid", isLoggedIn, isAdmin, async (req, res) => {
@@ -69,7 +69,7 @@ router.get("/admin/edit/:productid", isLoggedIn, isAdmin, async (req, res) => {
   try {
     let product = await productModel.findById(req.params.productid);
     let success = req.flash("success");
-    res.render("editproduct", { product, success, loggedin: true });
+    res.render("editproduct", { product, success, loggedin: true, user: req.user });
   } catch (err) {
     res.send(err.message);
   }
