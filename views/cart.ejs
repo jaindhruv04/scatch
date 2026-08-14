@@ -1,5 +1,6 @@
 <%- include('./partials/header') %>
 
+<% if(user.cart.length > 0){ %>
 <div class="flex-1 overflow-y-auto w-full px-20 py-10">
   <div class="flex flex-wrap gap-6">
     <% user.cart.forEach(function(product){ %>
@@ -11,11 +12,9 @@
       </div>
       <div class="w-full flex justify-between px-4 py-3 bg-[<%= product.panelcolor %>]">
         <h3 class="text-lg text-[<%= product.textcolor %>]"><%= product.name %></h3>
-        <div class="flex items-center gap-1">
-          <i class="w-6 h-6 bg-white flex rounded-full items-center justify-center ri-add-line text-sm"></i>
-          <div class="px-2 py-1 rounded-md bg-white text-black text-sm">01</div>
-          <i class="w-6 h-6 bg-white flex rounded-full items-center justify-center ri-subtract-line text-sm"></i>
-        </div>
+        <a href="/removefromcart/<%= product._id %>">
+          <i class="w-6 h-6 bg-white flex rounded-full items-center justify-center ri-subtract-line text-sm text-red-500"></i>
+        </a>
       </div>
       <div class="flex items-center justify-between px-4 py-2 bg-[<%= product.panelcolor %>]">
         <h4 class="text-sm text-[<%= product.textcolor %>]">Net Total</h4>
@@ -24,9 +23,7 @@
     </div>
     <% }) %>
   </div>
-
   <div class="w-full h-[1px] bg-gray-300 my-10"></div>
-
   <div class="flex justify-center">
     <div class="w-full max-w-md">
       <h3 class="text-2xl text-white font-semibold mb-5 text-center bg-zinc-700 rounded-md">Price Breakdown</h3>
@@ -53,7 +50,11 @@
       <button class="w-full py-3 rounded-full text-white font-medium mt-2" style="background-color: #25282C;">Proceed to Checkout</button>
     </div>
   </div>
-
 </div>
+<% } else { %>
+<div class="flex-1 flex items-center justify-center">
+  <h1 class="text-4xl text-gray-500">Your Cart Is Empty </h1>
+</div>
+<% } %>
 
 <%- include('./partials/footer') %>

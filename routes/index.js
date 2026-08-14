@@ -20,7 +20,11 @@ router.get("/cart", isLoggedIn, async (req, res) => {
     .findOne({ email: req.user.email })
     .populate("cart");
   let bill = Number(
-    user.cart.reduce((acc, item) => acc + (Number(item.price) * (1 - Number(item.discount) / 100)), 0) + 20
+    user.cart.reduce(
+      (acc, item) =>
+        acc + Number(item.price) * (1 - Number(item.discount) / 100),
+      0,
+    ) + 20,
   );
   res.render("cart", { user, bill, loggedin: true });
 });
@@ -31,6 +35,14 @@ router.get("/addtocart/:productid", isLoggedIn, async (req, res) => {
   await user.save();
   req.flash("success", "Added To Cart");
   res.redirect("/shop");
+});
+
+router.get("/removefromcart/:productid", isLoggedIn, async (req, res) => {
+  let user = await userModel.findOne({ email: req.user.email });
+  let index = user.cart.indexOf(req.params.productid);
+  if (index > -1) user.cart.splice(index, 1);
+  await user.save();
+  res.redirect("/cart");
 });
 
 module.exports = router;
