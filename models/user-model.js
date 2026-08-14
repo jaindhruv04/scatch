@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
       ref: "product",
     },
   ],
-  contact: Number,
+  contact: String,
   picture: String,
 });
 
