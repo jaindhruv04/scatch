@@ -34,9 +34,53 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
-router.get("/admin", isLoggedIn, (req, res) => {
+const productModel = require("../models/product-model");
+const upload = require("../config/multer-config");
+
+const isAdmin = require("../middlewares/isAdmin");
+
+router.get("/admin", isLoggedIn, isAdmin, async (req, res) => {
+  let products = await productModel.find();
   let success = req.flash("success");
-  res.render("createproducts", { success: success, loggedin: true });
+  res.render("admin", { products, success, loggedin: true });
+});
+
+router.get("/admin/create", isLoggedIn, isAdmin, (req, res) => {
+  let success = req.flash("success");
+  res.render("createproducts", { success, loggedin: true });
+});
+
+router.get("/admin/delete/:productid", isLoggedIn, isAdmin, async (req, res) => {
+  try {
+    await productModel.findByIdAndDelete(req.params.productid);
+    req.flash("success", "Product Deleted Successfully");
+    res.redirect("/owners/admin");
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+router.get("/admin/edit/:productid", isLoggedIn, isAdmin, async (req, res) => {
+  try {
+    let product = await productModel.findById(req.params.productid);
+    let success = req.flash("success");
+    res.render("editproduct", { product, success, loggedin: true });
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+router.post("/admin/edit/:productid", isLoggedIn, isAdmin, upload.single("image"), async (req, res) => {
+  try {
+    let { name, price, discount, bgcolor, panelcolor, textcolor } = req.body;
+    let updateData = { name, price, discount, bgcolor, panelcolor, textcolor };
+    if (req.file) updateData.image = req.file.buffer;
+    await productModel.findByIdAndUpdate(req.params.productid, updateData);
+    req.flash("success", "Product Updated Successfully");
+    res.redirect("/owners/admin");
+  } catch (err) {
+    res.send(err.message);
+  }
 });
 
 module.exports = router;
