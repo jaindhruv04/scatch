@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("config");
 
 mongoose
-  .connect(`${config.get("MONGODB_URI")}/scatch`)
+  .connect(`${config.get("MONGODB_URI")}/solar`)
   .then(function () {
     console.log("connected");
   })

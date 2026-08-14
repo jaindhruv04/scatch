@@ -4,21 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Solar</title>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="font-['helvetica_now_display'] h-screen overflow-hidden flex flex-col" style="background-color: #F5F7F8;">
-  <nav class="w-full flex justify-between items-center px-8 py-4 shrink-0" style="background-color: #25282C;">
-    <h3 class="text-4xl font-semibold text-white">Scatch</h3>
+  <nav class="w-full flex justify-between items-center px-8 py-5 shrink-0" style="background-color: #24272B;">
+    <h3 class="text-4xl font-semibold text-white">Solar</h3>
     <% var loggedin = typeof loggedin != "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
     <div class="flex gap-6 text-xl">
       <a class="text-gray-300 hover:text-white transition-colors" href="/shop">Shop</a>
-      <% if(typeof user != "undefined" && user.email === "dhruvjain0412@gmail.com"){ %>
+      <% if(user && user.email === "dhruvjain0412@gmail.com"){ %>
       <a class="text-gray-300 hover:text-white transition-colors" href="/owners/admin"><%= user.fullname %></a>
-      <% } else if(typeof user != "undefined"){ %>
+      <% } else if(user){ %>
       <span class="text-gray-300"><%= user.fullname %></span>
       <% } %>
       <a class="text-gray-300 hover:text-white transition-colors" href="/cart">Cart</a>

@@ -18,34 +18,34 @@
 
 
 <div class="flex flex-1 overflow-hidden" style="background-color: #F5F7F8;">
-  <div class="w-[20%] flex flex-col items-start px-6 py-10 overflow-y-auto shrink-0" style="background-color: #D1D5DB;">
+  <div class="w-[20%] flex flex-col items-start px-6 py-10 overflow-y-auto shrink-0 text-white" style="background-color: #0B1117;">
 
     
     <div class="w-full">
       <button onclick="toggleSection('sort-options', this)"
-        class="w-full flex justify-between items-center text-gray-700 font-semibold uppercase text-sm tracking-wider">
+        class="w-full flex justify-between items-center font-semibold uppercase text-sm tracking-wider">
         Sort By
         <i class="ri-arrow-down-s-line text-lg transition-transform duration-200"></i>
       </button>
       <div id="sort-options" class="flex flex-col mt-3">
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">Popular</a>
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">Newest</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">Popular</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">Newest</a>
       </div>
     </div>
 
     <hr class="border-gray-400 my-6 w-full">
 
   
-    <div class="w-full">
+    <div class="w-full ">
       <button onclick="toggleSection('collection-options', this)"
-        class="w-full flex justify-between items-center text-gray-700 font-semibold uppercase text-sm tracking-wider">
+        class="w-full flex justify-between items-center  font-semibold uppercase text-sm tracking-wider">
         Collections
         <i class="ri-arrow-down-s-line text-lg transition-transform duration-200"></i>
       </button>
       <div id="collection-options" class="flex flex-col mt-3">
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">New Collection</a>
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">All Products</a>
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">Discounted Products</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">New Collection</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">All Products</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">Discounted Products</a>
       </div>
     </div>
 
@@ -53,21 +53,21 @@
 
     <div class="w-full">
       <button onclick="toggleSection('filter-options', this)"
-        class="w-full flex justify-between items-center text-gray-700 font-semibold uppercase text-sm tracking-wider">
+        class="w-full flex justify-between items-center  font-semibold uppercase text-sm tracking-wider">
         Filter By
         <i class="ri-arrow-down-s-line text-lg transition-transform duration-200"></i>
       </button>
       <div id="filter-options" class="flex flex-col mt-3">
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">Availability</a>
-        <a class="block w-fit mb-3 text-gray-700 hover:text-gray-900" href="">Discount</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">Availability</a>
+        <a class="block w-fit mb-3  hover:text-gray-900" href="">Discount</a>
       </div>
     </div>
 
   </div>
-  <div class="w-[75%] overflow-y-auto px-10 py-10">
+  <div class="w-[75%] overflow-y-auto px-10 py-10" >
     <div class="flex flex-wrap items-start gap-5">
       <% products.forEach(function(product){ %>
-<div class="w-60">
+<div class="w-60" >
   <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
     <% if(product.image){ %>
     <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
