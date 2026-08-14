@@ -40,9 +40,14 @@ const upload = require("../config/multer-config");
 const isAdmin = require("../middlewares/isAdmin");
 
 router.get("/admin", isLoggedIn, isAdmin, async (req, res) => {
-  let products = await productModel.find();
-  let success = req.flash("success");
-  res.render("admin", { products, success, loggedin: true });
+  try {
+    let products = await productModel.find();
+    let success = req.flash("success");
+    res.render("admin", { products, success, loggedin: true });
+  } catch (err) {
+    console.error("Admin route error:", err.message);
+    res.status(500).send(err.message);
+  }
 });
 
 router.get("/admin/create", isLoggedIn, isAdmin, (req, res) => {

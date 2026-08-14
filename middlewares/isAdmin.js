@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
-  if (req.user.email === "dhruvjain0412@gmail.com") {
+  console.log("isAdmin check - req.user:", req.user);
+  if (req.user && req.user.email === "dhruvjain0412@gmail.com") {
     return next();
   }
   req.flash("error", "You are not authorized to access this page");
