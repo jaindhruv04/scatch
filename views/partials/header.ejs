@@ -9,16 +9,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-['helvetica_now_display']">
-    <nav class="w-full flex justify-between px-5 py-3">
-        <h3 class="text-xl">Scatch</h3>
+<body class="font-['helvetica_now_display'] h-screen overflow-hidden flex flex-col">
+    <nav class="w-full flex justify-between items-center px-8 py-4 shrink-0" style="background-color: #25282C;">
+        <h3 class="text-4xl font-semibold text-white">Scatch</h3>
         <% var loggedin = typeof loggedin != "undefined" ? loggedin : true %>
         <% if(loggedin){ %>
-        <div class="flex gap-5">
-            <a href="/shop">Shop</a>
-            <a href="/cart">Cart</a>
-            <a href="">My Account</a>
-            <a class="text-red-500" href="/users/logout">Logout</a>
+        <div class="flex gap-6 text-xl">
+            <a class="text-gray-300 hover:text-white transition-colors" href="/shop">Shop</a>
+            <a class="text-gray-300 hover:text-white transition-colors" href="/cart">Cart</a>
+            <a class="text-gray-300 hover:text-white transition-colors" href="">My Account</a>
+            <a class="text-red-400 hover:text-red-300 transition-colors" href="/users/logout">Logout</a>
         </div>
         <% } %>
     </nav>
