@@ -9,41 +9,46 @@
 <% } %>
 
 <div class="flex flex-1 overflow-hidden">
-  <div class="w-[20%] flex flex-col items-start px-6 py-10 shrink-0" style="background-color: #D1D5DB;">
-    <a class="block w-fit mb-4 font-medium text-gray-700 hover:text-gray-900" href="/owners/admin">All Products</a>
-    <a class="block w-fit mb-4 font-medium text-gray-700 hover:text-gray-900" href="/owners/admin/create">Create New Product</a>
+  <div class="w-[20%] flex flex-col items-start px-6 py-10 shrink-0" style="background-color: #081020;">
+    <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin">All Products</a>
+    <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin/create">Create New Product</a>
   </div>
 
-  <div class="flex-1 overflow-y-auto px-10 py-10" style="background-color: #F5F7F8;">
-    <main class="w-3/4 bg-white p-8 shadow">
-      <h2 class="text-xl font-bold mb-4">Edit Product</h2>
-      <form autocomplete="off" action="/owners/admin/edit/<%= product._id %>" method="post" enctype="multipart/form-data">
-        <div class="mb-6">
-          <h3 class="text-lg font-semibold mb-2">Product Details</h3>
+  <div class="flex-1 overflow-y-auto px-10 py-10" style="background-color: #F4F7FA;">
+    <div class="w-full max-w-2xl">
+      <div class="rounded-2xl bg-white p-6 shadow-md">
+        <h3 class="mb-5 rounded-xl bg-slate-900 py-3 text-center text-xl font-semibold text-white">Edit Product</h3>
+        <form autocomplete="off" action="/owners/admin/edit/<%= product._id %>" method="post" enctype="multipart/form-data">
+
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">Product Details</p>
           <div class="mb-4">
-            <label class="block mb-2 font-medium">Product Image</label>
+            <label class="mb-1 block text-sm font-medium text-slate-700">Product Image</label>
             <% if(product.image){ %>
-            <img class="h-24 mb-3 rounded" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+            <img class="h-24 mb-3 rounded-xl object-contain" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
             <% } %>
-            <input name="image" type="file" class="py-2 px-4 rounded">
+            <input name="image" type="file" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none">
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <input name="name" type="text" placeholder="Product Name" value="<%= product.name %>" class="border p-2 rounded w-full">
-            <input name="price" type="text" placeholder="Product Price" value="<%= product.price %>" class="border p-2 rounded w-full">
-            <input name="discount" type="text" placeholder="Discount" value="<%= product.discount %>" class="border p-2 rounded w-full">
+          <div class="mb-4 grid grid-cols-2 gap-4">
+            <input name="name" type="text" placeholder="Product Name" value="<%= product.name %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
+            <input name="price" type="text" placeholder="Product Price" value="<%= product.price %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
           </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-2">Panel Details</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <input name="bgcolor" type="text" placeholder="Background Color" value="<%= product.bgcolor %>" class="border p-2 rounded w-full">
-            <input name="panelcolor" type="text" placeholder="Panel Color" value="<%= product.panelcolor %>" class="border p-2 rounded w-full">
-            <input name="textcolor" type="text" placeholder="Text Color" value="<%= product.textcolor %>" class="border p-2 rounded w-full">
+          <div class="mb-6">
+            <input name="discount" type="text" placeholder="Discount %" value="<%= product.discount %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
           </div>
-        </div>
-        <input class="px-5 py-2 rounded mt-5 bg-blue-500 text-white cursor-pointer" type="submit" value="Update Product">
-      </form>
-    </main>
+
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-500">Panel Details</p>
+          <div class="mb-4 grid grid-cols-2 gap-4">
+            <input name="bgcolor" type="text" placeholder="Background Color" value="<%= product.bgcolor %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
+            <input name="panelcolor" type="text" placeholder="Panel Color" value="<%= product.panelcolor %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
+          </div>
+          <div class="mb-6">
+            <input name="textcolor" type="text" placeholder="Text Color" value="<%= product.textcolor %>" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400">
+          </div>
+
+          <button type="submit" class="w-full rounded-xl bg-slate-900 py-3 font-semibold text-white transition-colors hover:bg-[#ffd266] hover:text-slate-900">Update Product</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 

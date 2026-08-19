@@ -9,32 +9,32 @@
 <% } %>
 
 <div class="flex flex-1 overflow-hidden">
-  <div class="w-[20%] flex flex-col items-start px-6 py-10 shrink-0" style="background-color: #D1D5DB;">
-    <a class="block w-fit mb-4 font-medium text-gray-700 hover:text-gray-900" href="/owners/admin">All Products</a>
-    <a class="block w-fit mb-4 font-medium text-gray-700 hover:text-gray-900" href="/owners/admin/create">Create New Product</a>
+  <div class="w-[20%] flex flex-col items-start px-6 py-10 shrink-0" style="background-color: #081020;">
+    <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin">All Products</a>
+    <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin/create">Create New Product</a>
   </div>
 
-  <div class="flex-1 overflow-y-auto px-10 py-10" style="background-color: #60a7ca;">
+  <div class="flex-1 overflow-y-auto px-10 py-10" style="background-color: #F4F7FA;">
     <% if(products.length > 0){ %>
-    <div class="flex flex-wrap gap-6">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <% products.forEach(function(product){ %>
-      <div class="w-56 rounded-md overflow-hidden shadow-sm">
-        <div class="w-full h-52 flex items-center justify-center bg-[<%= product.bgcolor %>]">
+      <div class="group w-full overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <div class="flex h-52 w-full items-center justify-center bg-[<%= product.bgcolor %>]">
           <% if(product.image){ %>
-          <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+          <img class="h-40 w-40 object-contain transition-transform duration-300 group-hover:scale-105" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
           <% } %>
         </div>
-        <div class="w-full flex justify-between px-4 py-3 bg-[<%= product.panelcolor %>]">
-          <div>
-            <h3 class="text-[<%= product.textcolor %>]"><%= product.name %></h3>
-            <h4 class="text-sm text-[<%= product.textcolor %>]">₹ <%= product.price %></h4>
+        <div class="flex justify-between bg-[<%= product.panelcolor %>] items-center px-4 py-3 min-h-[78px] text-[<%= product.textcolor %>]">
+          <div class="min-w-0">
+            <h3 class="truncate text-sm font-bold"><%= product.name %></h3>
+            <h4 class="mt-1 text-xs font-medium opacity-80">₹ <%= product.price %></h4>
           </div>
           <div class="flex items-center gap-2">
             <a href="/owners/admin/edit/<%= product._id %>">
-              <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-edit-line text-sm text-blue-500"></i>
+              <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-edit-line text-sm text-blue-500 transition-transform hover:scale-110"></i>
             </a>
             <a href="/owners/admin/delete/<%= product._id %>" onclick="return confirm('Are you sure you want to delete this product?')">
-              <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-delete-bin-line text-sm text-red-500"></i>
+              <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-delete-bin-line text-sm text-red-500 transition-transform hover:scale-110"></i>
             </a>
           </div>
         </div>
@@ -43,7 +43,7 @@
     </div>
     <% } else { %>
     <div class="flex items-center justify-center h-full">
-      <h2 class="text-xl text-gray-500">No Products Yet</h2>
+      <h2 class="rounded-2xl bg-white px-8 py-10 text-center text-2xl font-semibold text-slate-500 shadow-sm">No Products Yet</h2>
     </div>
     <% } %>
   </div>
