@@ -20,7 +20,12 @@
 <div class="flex flex-1 flex-col overflow-y-auto" style="background-color: #F4F7FA;">
   <div class="flex w-full flex-wrap items-start gap-4 border-b border-slate-800 bg-[#08131f] px-5 py-5 text-white lg:px-10" style="background-color: #08131F;">
 
-    
+    <div class="w-full">
+      <form method="GET" action="/shop">
+        <input name="q" type="text" placeholder="Search products..." class="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-slate-100 placeholder-slate-400 outline-none focus:border-slate-500">
+      </form>
+    </div>
+
     <div class="w-full rounded-xl border border-slate-800 bg-slate-900/50 p-4 md:w-[calc(33.333%-0.75rem)]">
       <button onclick="toggleSection('sort-options', this)"
         class="flex w-full items-center justify-between text-xs font-semibold uppercase tracking-wider text-slate-100">
@@ -67,7 +72,7 @@
   <div class="w-full px-5 py-10 lg:px-10 lg:py-12" >
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <% products.forEach(function(product){ %>
-<div class="group w-full overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl" >
+<div class="group product-card w-full overflow-hidden rounded-2xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl" data-name="<%= product.name %>">
   <div class="flex h-56 w-full items-center justify-center bg-[<%= product.bgcolor %>] sm:h-64">
     <% if(product.image){ %>
     <img class="h-40 w-40 object-contain transition-transform duration-300 group-hover:scale-105 sm:h-48 sm:w-48" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
