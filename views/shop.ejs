@@ -81,7 +81,13 @@
       <h3 class="truncate text-sm font-bold">
         <%= product.name %>
       </h3>
-      <h4 class="mt-1 text-xs font-medium opacity-80">₹ <%= product.price %>
+      <h4 class="mt-1 text-xs font-medium opacity-80">
+        <% if(product.discount > 0){ %>
+        <span class="line-through opacity-60">₹ <%= product.price %></span>
+        <span class="ml-1">₹ <%= Math.round(product.price * (1 - product.discount / 100)) %></span>
+        <% } else { %>
+        ₹ <%= product.price %>
+        <% } %>
       </h4>
     </div>
     <a class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-lg text-slate-900 transition-transform hover:scale-110" href="/addtocart/<%=product._id%>">
