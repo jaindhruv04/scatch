@@ -10,19 +10,19 @@
 </head>
 
 <body class="min-h-screen flex flex-col font-sans" style="background-color: #F5F7F8;">
-  <nav class="w-full flex justify-between items-center px-5 py-4 sm:px-8 sm:py-5 shrink-0" style="background-color: #24272B;">
+  <nav class="flex w-full items-center justify-between gap-3 px-4 py-4 sm:px-8 sm:py-5" style="background-color: #24272B;">
     <a href="/shop" class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Solar</a>
     <% var loggedin = typeof loggedin != "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-    <div class="flex items-center gap-3 text-sm sm:gap-6 sm:text-base">
-      <a class="text-gray-300 hover:text-white transition-colors" href="/shop">Shop</a>
+    <div class="flex items-center gap-2 text-xs sm:gap-6 sm:text-base">
+      <a class="hidden text-gray-300 transition-colors hover:text-white sm:block" href="/shop">Shop</a>
       <% if(user && user.email === "dhruvjain0412@gmail.com"){ %>
-      <a class="text-gray-300 hover:text-white transition-colors" href="/owners/admin"><%= user.fullname %></a>
+      <a class="hidden text-gray-300 transition-colors hover:text-white md:block" href="/owners/admin"><%= user.fullname %></a>
       <% } else if(user){ %>
-      <span class="text-gray-300"><%= user.fullname %></span>
+      <span class="hidden text-gray-300 md:block"><%= user.fullname %></span>
       <% } %>
-      <a class="rounded-lg border border-slate-600 px-3 py-2 text-gray-100 transition-colors hover:border-[#ffd266] hover:text-[#ffd266]" href="/cart">Cart</a>
-      <a class="text-red-400 hover:text-red-300 transition-colors" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
+      <a class="rounded-lg border border-slate-600 px-2.5 py-2 text-gray-100 transition-colors hover:border-[#ffd266] hover:text-[#ffd266] sm:px-3" href="/cart">Cart</a>
+      <a class="text-red-400 transition-colors hover:text-red-300" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
     </div>
     <% } %>
   </nav>
