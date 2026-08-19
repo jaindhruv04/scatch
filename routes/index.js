@@ -13,7 +13,18 @@ router.get("/shop", isLoggedIn, async (req, res) => {
   let products = await productModel.find();
   let success = req.flash("success");
   let error = req.flash("error");
-  res.render("shop", { products, loggedin: true, success, error, user: req.user });
+  res.render("shop", {
+    products,
+    loggedin: true,
+    success,
+    error,
+    user: req.user,
+  });
+});
+
+router.get("/profile", isLoggedIn, async (req, res) => {
+  let user = await userModel.findOne({ email: req.user.email });
+  res.render("profile", { user, loggedin: true });
 });
 
 router.get("/cart", isLoggedIn, async (req, res) => {

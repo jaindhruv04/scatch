@@ -69,3 +69,13 @@ module.exports.logoutUser = async (req, res) => {
   res.clearCookie("token");
   res.redirect("/");
 };
+
+module.exports.editUser = async(req,res)=>{
+  try {
+    let { fullname, contact } = req.body;
+    await userModel.findOneAndUpdate({ email: req.user.email }, { fullname, contact });
+    res.redirect("/profile");
+  } catch(err) {
+    res.send(err.message);
+  }
+}

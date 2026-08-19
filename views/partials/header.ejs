@@ -17,9 +17,9 @@
     <div class="flex items-center gap-2 text-xs sm:gap-6 sm:text-base">
       <a class="hidden text-gray-300 transition-colors hover:text-white sm:block" href="/shop">Shop</a>
       <% if(user && user.email === "dhruvjain0412@gmail.com"){ %>
-      <a class="hidden text-gray-300 transition-colors hover:text-white md:block" href="/owners/admin"><%= user.fullname %></a>
+      <a class="block text-gray-300 transition-colors hover:text-white md:block" href="/owners/admin"><%= user.fullname %></a>
       <% } else if(user){ %>
-      <span class="hidden text-gray-300 md:block"><%= user.fullname %></span>
+      <a class="block text-gray-300 transition-colors hover:text-white md:block" href="/profile"><%= user.fullname %></a>
       <% } %>
       <a class="rounded-lg border border-slate-600 px-2.5 py-2 text-gray-100 transition-colors hover:border-[#ffd266] hover:text-[#ffd266] sm:px-3" href="/cart">Cart</a>
       <a class="text-red-400 transition-colors hover:text-red-300" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
