@@ -9,19 +9,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-['helvetica_now_display'] h-screen overflow-hidden flex flex-col" style="background-color: #F5F7F8;">
-  <nav class="w-full flex justify-between items-center px-8 py-5 shrink-0" style="background-color: #24272B;">
-    <h3 class="text-4xl font-semibold text-white">Solar</h3>
+<body class="min-h-screen flex flex-col font-sans" style="background-color: #F5F7F8;">
+  <nav class="w-full flex justify-between items-center px-5 py-4 sm:px-8 sm:py-5 shrink-0" style="background-color: #24272B;">
+    <h3 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Solar</h3>
     <% var loggedin = typeof loggedin != "undefined" ? loggedin : true %>
     <% if(loggedin){ %>
-    <div class="flex gap-6 text-xl">
+    <div class="flex items-center gap-3 text-sm sm:gap-6 sm:text-base">
       <a class="text-gray-300 hover:text-white transition-colors" href="/shop">Shop</a>
       <% if(user && user.email === "dhruvjain0412@gmail.com"){ %>
       <a class="text-gray-300 hover:text-white transition-colors" href="/owners/admin"><%= user.fullname %></a>
       <% } else if(user){ %>
       <span class="text-gray-300"><%= user.fullname %></span>
       <% } %>
-      <a class="text-gray-300 hover:text-white transition-colors" href="/cart">Cart</a>
+      <a class="rounded-lg border border-slate-600 px-3 py-2 text-gray-100 transition-colors hover:border-[#ffd266] hover:text-[#ffd266]" href="/cart">Cart</a>
       <a class="text-red-400 hover:text-red-300 transition-colors" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
     </div>
     <% } %>
