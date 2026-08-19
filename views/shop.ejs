@@ -21,9 +21,7 @@
   <div class="flex w-full flex-wrap items-start gap-4 border-b border-slate-800 bg-[#08131f] px-5 py-5 text-white lg:px-10" style="background-color: #08131F;">
 
     <div class="w-full">
-      <form method="GET" action="/shop">
-        <input name="q" type="text" placeholder="Search products..." class="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-slate-100 placeholder-slate-400 outline-none focus:border-slate-500">
-      </form>
+      <input oninput="searchProducts(this.value)" type="text" placeholder="Search products..." class="w-full rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-slate-100 placeholder-slate-400 outline-none focus:border-slate-500">
     </div>
 
     <div class="w-full rounded-xl border border-slate-800 bg-slate-900/50 p-4 md:w-[calc(33.333%-0.75rem)]">
@@ -96,6 +94,13 @@
 </div>
 </div>
 <script>
+  function searchProducts(val) {
+    let cards = document.querySelectorAll('.product-card');
+    cards.forEach(function(card) {
+      let name = card.getAttribute('data-name').toLowerCase();
+      card.style.display = name.includes(val.toLowerCase()) ? '' : 'none';
+    });
+  }
   function toggleSection(id, btn) {
     const el = document.getElementById(id);
     const icon = btn.querySelector('i');

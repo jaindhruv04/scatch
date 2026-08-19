@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/shop", isLoggedIn, async (req, res) => {
-  let products = await productModel.find({ name: { $regex: req.query.q || "", $options: "i" } });
+  let products = await productModel.find();
   let success = req.flash("success");
   let error = req.flash("error");
   res.render("shop", { products, loggedin: true, success, error, user: req.user });
