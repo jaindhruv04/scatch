@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaindhruv04/scatch.git"
+    "url": "git+https://github.com/jaindhruv04/solar.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/jaindhruv04/scatch/issues"
+    "url": "https://github.com/jaindhruv04/solar/issues"
   },
-  "homepage": "https://github.com/jaindhruv04/scatch#readme",
+  "homepage": "https://github.com/jaindhruv04/solar#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "config": "^5.0.0",
