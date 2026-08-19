@@ -23,6 +23,8 @@
       <div class="relative">
         <button onclick="toggleDropdown()" class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-bold text-slate-900 transition-opacity hover:opacity-80"><%= user.fullname.charAt(0).toUpperCase() %></button>
         <div id="avatar-dropdown" class="absolute right-0 top-10 hidden w-48 rounded-xl bg-white shadow-lg py-2">
+          <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 sm:hidden" href="/shop">Shop</a>
+          <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 sm:hidden" href="/cart">Cart</a>
           <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" href="/owners/admin">Admin</a>
           <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" href="/profile">Profile</a>
           <a class="block px-4 py-2 text-sm text-red-500 hover:bg-slate-100" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
@@ -32,6 +34,8 @@
       <div class="relative">
         <button onclick="toggleDropdown()" class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-bold text-slate-900 transition-opacity hover:opacity-80"><%= user.fullname.charAt(0).toUpperCase() %></button>
         <div id="avatar-dropdown" class="absolute right-0 top-10 hidden w-48 rounded-xl bg-white shadow-lg py-2">
+          <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 sm:hidden" href="/shop">Shop</a>
+          <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 sm:hidden" href="/cart">Cart</a>
           <a class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" href="/profile">Profile</a>
           <a class="block px-4 py-2 text-sm text-red-500 hover:bg-slate-100" href="/users/logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
         </div>
