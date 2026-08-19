@@ -8,13 +8,18 @@
 </div>
 <% } %>
 
+<div class="flex md:hidden w-full gap-6 px-5 py-3" style="background-color: #081020;">
+  <a class="font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin">All Products</a>
+  <a class="font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin/create">Create New Product</a>
+</div>
+
 <div class="flex flex-1 overflow-hidden">
-  <div class="w-[20%] flex flex-col items-start px-6 py-10 shrink-0" style="background-color: #081020;">
+  <div class="hidden md:flex md:w-[20%] flex-col items-start px-6 py-10 shrink-0" style="background-color: #081020;">
     <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin">All Products</a>
     <a class="block w-fit mb-4 font-medium text-gray-300 transition-colors hover:text-[#ffd266]" href="/owners/admin/create">Create New Product</a>
   </div>
 
-  <div class="flex-1 overflow-y-auto px-10 py-10" style="background-color: #F4F7FA;">
+  <div class="flex-1 overflow-y-auto px-5 py-6 md:px-10 md:py-10" style="background-color: #F4F7FA;">
     <% if(products.length > 0){ %>
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       <% products.forEach(function(product){ %>
